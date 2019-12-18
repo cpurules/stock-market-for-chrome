@@ -17,7 +17,7 @@ if(window.location.href.indexOf("type=portfolio") != -1) {
             var currentPrice = portfolioCells[3].innerHTML;
             
             var sortableElement = {
-                "value": currentPrice,
+                "value": parseInt(currentPrice),
                 "dataRow": portfolioRow,
                 "hiddenRow": tableRows[i+1]
             };
@@ -40,5 +40,20 @@ if(window.location.href.indexOf("type=portfolio") != -1) {
         }
         tableRows[2].parentNode.insertBefore(thisEl.hiddenRow, tableRows[2]);
         tableRows[2].parentNode.insertBefore(thisEl.dataRow, tableRows[2]);
+    }
+}
+else if(window.location.href.indexOf("type=list") != -1) {
+    var stocksTable = document.getElementById("main").querySelector("div#content").querySelector("table").querySelector("td[class=content]").querySelector("table");
+    var stockRows = stocksTable.querySelectorAll("tr");
+
+    // The first row is a header, we can skip
+    for(var i = 1; i < stockRows.length; i++) {
+        var stockRow = stockRows[i];
+        var stockCells = stockRow.querySelectorAll("td");
+        var stockPrice = parseInt(stockCells[5].textContent);
+
+        if(stockPrice != 15) {
+            stockRow.setAttribute("style", "display:none");
+        }
     }
 }
