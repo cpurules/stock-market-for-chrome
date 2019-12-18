@@ -1,0 +1,22 @@
+{
+    "name": "Stock Market Helper",
+    "version": "0.1",
+    "description": "Re-orders and filters stock market pages for ease of transactions.  Icon made by Gregor Cesnar from www.flaticon.com.",
+    "manifest_version": 2,
+    "icons": {
+        "16": "res/icon16.png",
+        "32": "res/icon32.png",
+        "128": "res/icon128.png"
+    },
+    "author": "Charlie Unfricht",
+    "content_scripts": [
+        {
+            "matches": ["http://www.neopets.com/stockmarket.phtml*"],
+            "js": ["content.js"]
+        }
+    ],
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    }
+}
